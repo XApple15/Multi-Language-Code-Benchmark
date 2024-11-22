@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ursug.benchmarkssc.Controller.TestsAndPLSelectController">
+   <children>
+      <AnchorPane fx:id="anchorpane_selectPL" layoutX="36.0" layoutY="73.0">
+         <children>
+                 <CheckBox fx:id="checkbox_cpp" layoutY="35.0" mnemonicParsing="false" text="C++" />
+                 <CheckBox fx:id="checkbox_csharp" layoutY="62.0" mnemonicParsing="false" text="C#" />
+                 <CheckBox fx:id="checkbox_java" layoutY="89.0" mnemonicParsing="false" text="Java" />
+                 <Label layoutX="9.0" text="Select Programming Languages">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorpane_tests_parameters" layoutX="311.0" layoutY="88.0" prefHeight="221.0" prefWidth="446.0">
+         <children>
+             <Label layoutX="40.0" layoutY="-15.0" text="Select Tests">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="checkbox_memalloc" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Memory Allocation" />
+            <CheckBox fx:id="checkbox_memaccess" layoutX="14.0" layoutY="55.0" mnemonicParsing="false" text="Memory Access" />
+            <CheckBox fx:id="checkbox_thcreate" layoutX="14.0" layoutY="90.0" mnemonicParsing="false" text="Thread Creation" />
+            <CheckBox fx:id="checkbox_thmigration" layoutX="14.0" layoutY="125.0" mnemonicParsing="false" text="Thread Migration" />
+            <CheckBox fx:id="checkbox_thconswitch" layoutX="14.0" layoutY="162.0" mnemonicParsing="false" text="Thread ContextSwitch" />
+             <TextField fx:id="textfield_memalloc_from" layoutX="162.0" layoutY="14.0" prefHeight="26.0" prefWidth="123.0" promptText="From" />
+             <TextField fx:id="textfield_memalloc_to" layoutX="305.0" layoutY="14.0" prefHeight="26.0" prefWidth="123.0" promptText="To" />
+             <TextField fx:id="textfield_memaccess_from" layoutX="162.0" layoutY="50.0" prefHeight="26.0" prefWidth="123.0" promptText="From" />
+             <TextField fx:id="textfield_memacces_to" layoutX="305.0" layoutY="50.0" prefHeight="26.0" prefWidth="123.0" promptText="To" />
+             <TextField fx:id="textfield_thcreate_from" layoutX="162.0" layoutY="86.0" prefHeight="26.0" prefWidth="123.0" promptText="From" />
+             <TextField fx:id="textfield_thcreate_to" layoutX="305.0" layoutY="86.0" prefHeight="26.0" prefWidth="123.0" promptText="To" />
+             <TextField fx:id="textfield_thmigration_from" layoutX="162.0" layoutY="122.0" prefHeight="26.0" prefWidth="123.0" promptText="From" />
+             <TextField fx:id="textfield_thmigration_to" layoutX="305.0" layoutY="122.0" prefHeight="26.0" prefWidth="123.0" promptText="To" />
+             <TextField fx:id="textfield_thconswitch_from" layoutX="162.0" layoutY="158.0" prefHeight="26.0" prefWidth="123.0" promptText="From" />
+             <TextField fx:id="textfield_thconswitch_to" layoutX="305.0" layoutY="158.0" prefHeight="26.0" prefWidth="123.0" promptText="To" />
+
+         </children>
+      </AnchorPane>
+           <Button fx:id="button_starttest" layoutX="311.0" layoutY="310.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" text="Start Tests" />
+      <Label layoutX="291.0" layoutY="21.0" prefHeight="31.0" prefWidth="163.0" text="Benchmark">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button layoutX="36.0" layoutY="317.0" mnemonicParsing="false" text="Previous tests" />
+      <ProgressIndicator layoutX="338.0" layoutY="304.0" prefHeight="66.0" prefWidth="65.0"  fx:id="progressindicator_loading_tests"/>
+   </children>
+</AnchorPane>

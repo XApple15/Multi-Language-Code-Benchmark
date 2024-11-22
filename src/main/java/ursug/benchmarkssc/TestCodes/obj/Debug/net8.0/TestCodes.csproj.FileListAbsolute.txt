@@ -1,0 +1,14 @@
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\obj\Debug\net8.0\TestCodes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\obj\Debug\net8.0\TestCodes.AssemblyInfoInputs.cache
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\obj\Debug\net8.0\TestCodes.AssemblyInfo.cs
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\obj\Debug\net8.0\TestCodes.csproj.CoreCompileInputs.cache
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\bin\Debug\net8.0\TestCodes.exe
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\bin\Debug\net8.0\TestCodes.deps.json
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\bin\Debug\net8.0\TestCodes.runtimeconfig.json
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\bin\Debug\net8.0\TestCodes.dll
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\bin\Debug\net8.0\TestCodes.pdb
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\obj\Debug\net8.0\TestCodes.dll
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\obj\Debug\net8.0\refint\TestCodes.dll
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\obj\Debug\net8.0\TestCodes.pdb
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\obj\Debug\net8.0\TestCodes.genruntimeconfig.cache
+C:\Users\George\IdeaProjects\ProiectSSC\BenchmarkSSC\src\main\java\ursug\benchmarkssc\TestCodes\obj\Debug\net8.0\ref\TestCodes.dll

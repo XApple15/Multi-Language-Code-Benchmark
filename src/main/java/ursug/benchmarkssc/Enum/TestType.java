@@ -1,6 +1,8 @@
 package ursug.benchmarkssc.Enum;
 
 public enum TestType {
+    MEMORY_ALLOCATION,
+    MEMORY_ACCESS,
     MEMORY_ALLOCATION_STATIC,
     MEMORY_ALLOCATION_DYNAMIC,
     MEMORY_ACCESS_STATIC,

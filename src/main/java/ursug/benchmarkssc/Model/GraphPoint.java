@@ -1,4 +1,4 @@
-package ursug.benchmarkssc.CodeController;
+package ursug.benchmarkssc.Model;
 
 public class GraphPoint {
     public int x;

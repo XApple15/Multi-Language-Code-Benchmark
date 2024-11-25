@@ -1,6 +1,8 @@
 package ursug.benchmarkssc.CodeController;
 
-import ursug.benchmarkssc.Enum.TestType;
+import ursug.benchmarkssc.Model.GraphPoint;
+import ursug.benchmarkssc.Model.TestCase;
+import ursug.benchmarkssc.Model.TestResults;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -17,10 +19,10 @@ public class CPLUSPLUS {
         this.testCases = testTypes;
     }
 
-    public void runTests() {
+    public List<TestResults> runTests() {
         this.testResults = new ArrayList<>();
         for (TestCase testCase : testCases) {
-            TestResults testResult = new TestResults(testCase, null, null);
+            TestResults testResult = new TestResults(testCase, new ArrayList<>(), null);
             switch (testCase.testType) {
                 case MEMORY_ALLOCATION_STATIC:
                     runMemoryAllocation(testCase, testResult);
@@ -46,6 +48,7 @@ public class CPLUSPLUS {
             }
             testResults.add(testResult);
         }
+        return testResults;
     }
 
     private void runMemoryAllocation(TestCase testCase, TestResults testResult) {

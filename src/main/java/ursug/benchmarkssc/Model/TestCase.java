@@ -1,4 +1,4 @@
-package ursug.benchmarkssc.CodeController;
+package ursug.benchmarkssc.Model;
 
 import ursug.benchmarkssc.Enum.TestPL;
 import ursug.benchmarkssc.Enum.TestType;

@@ -1,14 +1,21 @@
 package ursug.benchmarkssc.Controller;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import ursug.benchmarkssc.CodeController.CPLUSPLUS;
-import ursug.benchmarkssc.CodeController.TestCase;
+import ursug.benchmarkssc.Model.TestCase;
+import ursug.benchmarkssc.Model.TestResults;
 import ursug.benchmarkssc.Enum.TestPL;
 import ursug.benchmarkssc.Enum.TestType;
 
@@ -114,13 +121,37 @@ public class TestsAndPLSelectController {
         return true;
     }
 
-
+    @FXML
     public void createTestsBasedOnProgrammingLanguage() {
+        List<List<TestResults>> testResults = new ArrayList<>();
         if (checkbox_cpp.isSelected()) {
             //create tests for c++
             List<TestCase> testCases = createTestsBasedOnTestType(TestPL.CPP);
             CPLUSPLUS cplusplus = new CPLUSPLUS(testCases);
-            cplusplus.runTests();
+            List<TestResults> results = cplusplus.runTests();
+            testResults.add(results);
+            System.out.println(results.size() + " lsita mica size");
+
+        }
+        System.out.println(testResults.size() + " lsita mare size");
+        System.out.println(testResults.get(0).size() + " lsita mica size");
+
+
+        //go to results page and pass results to it
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ursug/benchmarkssc/test_results.fxml"));
+            Parent root = loader.load();
+
+            TestResultsController controller = loader.getController();
+            controller.initializeWithData(testResults);
+
+            Platform.runLater(() -> {
+                Stage stage = (Stage) checkbox_memaccess.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Scene 2");
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

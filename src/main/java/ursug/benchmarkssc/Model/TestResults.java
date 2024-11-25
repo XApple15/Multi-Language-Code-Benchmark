@@ -1,4 +1,4 @@
-package ursug.benchmarkssc.CodeController;
+package ursug.benchmarkssc.Model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

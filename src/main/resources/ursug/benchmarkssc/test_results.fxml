@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="515.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ursug.benchmarkssc.Controller.TestResultsController">
+   <children>
+      <LineChart fx:id="linechart_result" layoutX="205.0" layoutY="84.0">
+        <xAxis>
+          <NumberAxis fx:id="axisX" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="axisY" side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <ChoiceBox layoutX="34.0" layoutY="108.0" prefWidth="150.0" fx:id="choicebox_selectTest"/>
+      <CheckBox layoutX="57.0" layoutY="164.0" mnemonicParsing="false" text="C++" fx:id="checkbox_cpp"/>
+      <CheckBox layoutX="58.0" layoutY="196.0" mnemonicParsing="false" text="C#" fx:id="checkbox_csharp"/>
+      <CheckBox layoutX="59.0" layoutY="228.0" mnemonicParsing="false" text="Java" fx:id="checkbox_java"/>
+   </children>
+</AnchorPane>

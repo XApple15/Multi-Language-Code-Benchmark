@@ -1,6 +1,7 @@
 module ursug.benchmarkssc {
     requires javafx.controls;
     requires javafx.fxml;
+    requires jdk.incubator.vector;
 
     exports ursug.benchmarkssc; // Export the root package
 

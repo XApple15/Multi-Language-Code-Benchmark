@@ -1,11 +1,11 @@
 package ursug.benchmarkssc.Model;
 
 public class GraphPoint {
-    public int x;
-    public int y;
+    public int index;
+    public long value;
 
-    public GraphPoint(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public GraphPoint(int x, long y) {
+        this.index = x;
+        this.value = y;
     }
 }

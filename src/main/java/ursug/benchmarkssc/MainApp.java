@@ -1,57 +1,63 @@
 package ursug.benchmarkssc;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ursug.benchmarkssc.Enum.TestType;
+import ursug.benchmarkssc.Controller.TestResultsController;
+import ursug.benchmarkssc.Model.TestResults;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.util.List;
 
 public class MainApp extends Application {
 
     private static Stage primaryStage;
+    public static String TESTS_AND_PL_SELECT = "tests_and_PL_select.fxml";
+    public static String TEST_RESULTS = "test_results.fxml";
+    public static String ALL_RESULTS = "all_results.fxml";
 
     @Override
     public void start(Stage stage) throws Exception {
         primaryStage = stage;
-        switchToSceneOne();
+        primaryStage.setTitle("Benchmark");
+        switchToMain();
     }
 
-    public void Test() {
 
-        for (int i = 10000; i <= 100000; i = i + 1000) {
-            try {
-                ProcessBuilder processBuilder = new ProcessBuilder("src/main/java/ursug/benchmarkssc/TestCodes/bin/Debug/net8.0/TestCodes.exe", Integer.toString(i), TestType.MEMORY_ALLOCATION_STATIC.toString());
-                processBuilder.redirectErrorStream(true);
-                Process process = processBuilder.start();
+    public static void switchToMain() throws Exception {
+        Parent root = FXMLLoader.load(MainApp.class.getResource(TESTS_AND_PL_SELECT));
+        primaryStage.setScene(new Scene(root, 910, 400));
+        primaryStage.show();
+    }
 
-                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    System.out.println(line);
-                }
-                int exitCode = process.waitFor();
-                if(exitCode != 0){
-                    System.out.println("C++ program exited with code: " + exitCode);
-                    break;
-                }
-                System.out.println("C++ program exited with code: " + exitCode);
+    public static void switchToResults(List<List<TestResults>> testResults, Stage currentStage) throws Exception {
+        try {
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(TEST_RESULTS));
+            Parent root = loader.load();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            TestResultsController controller = loader.getController();
+            controller.initializeWithData(testResults);
+
+            Platform.runLater(() -> {
+                Stage stage = currentStage;
+                stage.setScene(new Scene(root));
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    // Static methods to switch scenes
-    public static void switchToSceneOne() throws Exception {
-        Parent root = FXMLLoader.load(MainApp.class.getResource("tests_and_PL_select.fxml"));
-        primaryStage.setScene(new Scene(root, 760, 400));
-        primaryStage.setTitle("Scene 1");
-        primaryStage.show();
+    public static void switchToAllResults(Stage currentStage) throws Exception {
+        try {
+            Parent root = FXMLLoader.load(MainApp.class.getResource(ALL_RESULTS));
+            currentStage.setScene(new Scene(root));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {

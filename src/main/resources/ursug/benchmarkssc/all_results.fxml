@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="280.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ursug.benchmarkssc.Controller.AllResultsController">
+   <children>
+      <ChoiceBox fx:id="choicebox_selecttest" layoutX="145.0" layoutY="127.0" prefWidth="150.0" />
+      <Button layoutX="194.0" layoutY="213.0" mnemonicParsing="false" text="Back" fx:id="button_goback" />
+
+   </children>
+</AnchorPane>

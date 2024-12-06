@@ -1,19 +1,29 @@
 package ursug.benchmarkssc.Controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.*;
 import ursug.benchmarkssc.Enum.TestPL;
 import ursug.benchmarkssc.Enum.TestType;
+import ursug.benchmarkssc.MainApp;
 import ursug.benchmarkssc.Model.GraphPoint;
 import ursug.benchmarkssc.Model.TestResults;
+import ursug.benchmarkssc.Utils.ShowAlert;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import static ursug.benchmarkssc.Utils.ShowAlert.setAlert;
 
 public class TestResultsController {
     public LineChart<Number, Number> linechart_result;
@@ -25,20 +35,33 @@ public class TestResultsController {
     public CheckBox checkbox_cpp;
     public CheckBox checkbox_csharp;
     public CheckBox checkbox_java;
+    public Button button_goback;
+    public Button button_saveresults;
+    public Label label_erorr_index;
+
+    Alert a = new Alert(Alert.AlertType.NONE);
+
 
     public void initialize() {
         axisX.setLabel("Size");
         axisY.setLabel("Time(ms)");
+        label_erorr_index.setVisible(false);
 
         choicebox_selectTest.setOnAction(event -> viewGraph());
         checkbox_cpp.setOnAction(event -> viewGraph());
         checkbox_csharp.setOnAction(event -> viewGraph());
         checkbox_java.setOnAction(event -> viewGraph());
+        button_saveresults.setOnAction(actionEvent -> {
+            if (saveResultsToJson(allTestResults)) {
+                setAlert(Alert.AlertType.CONFIRMATION, a);
+            } else {
+                setAlert(Alert.AlertType.ERROR, a);
+            }
+        });
     }
 
     public void initializeWithData(List<List<TestResults>> testResults) {
         this.allTestResults = testResults;
-
 
         ObservableList<String> choicebox_values = FXCollections.observableArrayList();
         choicebox_values.add(TestType.MEMORY_ALLOCATION.toString());
@@ -47,7 +70,19 @@ public class TestResultsController {
             choicebox_values.add(testResult.testCase.testType.name());
         }
         choicebox_selectTest.setItems(choicebox_values);
+        button_goback.setOnAction(event -> goBack());
     }
+
+    private void goBack() {
+
+        try {
+            MainApp.switchToMain();
+        } catch (Exception e) {
+            e.printStackTrace();
+            setAlert(Alert.AlertType.ERROR, a);
+        }
+    }
+
 
     public void viewGraph() {
         if (validateInput()) {
@@ -125,11 +160,22 @@ public class TestResultsController {
         List<XYChart.Series<Number, Number>> seriesList = new ArrayList<>();
 
         axisX.setAutoRanging(false);
+        label_erorr_index.setVisible(false);
 
         for (List<TestResults> resultsList : testResults) {
             for (TestResults testResult : resultsList) {
+                if (testResult.errorIndex != null) {
+                    ShowAlert.setAlert(Alert.AlertType.ERROR, a);
+                    a.setContentText("Test" + testResult.testCase.testPL + " " + testResult.testCase.testType
+                            + " failed at index " + testResult.errorIndex);
+                    label_erorr_index.setText(label_erorr_index.getText().toString() + " Test "
+                            + testResult.testCase.testPL + " " + testResult.testCase.testType + " failed at index "
+                            + testResult.errorIndex + "\n");
+                    label_erorr_index.setVisible(true);
+                }
+
                 XYChart.Series<Number, Number> series = new XYChart.Series<>();
-                series.setName("Test Result " + testResult.testCase.testType);
+                series.setName(testResult.testCase.testPL.toString() + " " + testResult.testCase.testType + " avg time: " + String.format("%.2f", testResult.averageTime));
 
                 int start = testResult.testCase.startInterval;
                 int end = testResult.testCase.endInterval;
@@ -139,26 +185,69 @@ public class TestResultsController {
                 axisX.setTickUnit((end - start) / 10.0);
 
                 List<Integer> xValues = new ArrayList<>();
-                List<Integer> yValues = new ArrayList<>();
+                List<Long> yValues = new ArrayList<>();
 
                 for (GraphPoint graphPoint : testResult.graphPoints) {
-                    xValues.add(graphPoint.x);
-                    yValues.add(graphPoint.y);
+                    xValues.add(graphPoint.index);
+                    yValues.add(graphPoint.value);
                 }
 
                 int windowSize = 5;
-                List<Integer> smoothedYValues = movingAverage(yValues, windowSize);
+                //List<Integer> smoothedYValues = movingAverage(yValues, windowSize);
 
                 for (int i = 0; i < xValues.size(); i++) {
-                    series.getData().add(new XYChart.Data<>(xValues.get(i), smoothedYValues.get(i)));
+                    series.getData().add(new XYChart.Data<>(xValues.get(i), yValues.get(i)));
                 }
+
                 seriesList.add(series);
             }
         }
         linechart_result.getData().addAll(seriesList);
     }
 
-    private List<Integer> movingAverage(List<Integer> values, int windowSize) {
+    private boolean saveResultsToJson(List<List<TestResults>> testResults) {
+        JsonObject results = new JsonObject();
+        for (List<TestResults> testResultList : testResults) {
+
+            for (TestResults testResult : testResultList) {
+                JsonObject metrics = new JsonObject();
+                metrics.addProperty("avg_execution_time", testResult.averageTime);
+                metrics.addProperty("err_index", testResult.errorIndex);
+
+                JsonObject testObject = new JsonObject();
+                testObject.addProperty("time_stamp", testResult.date.toString());
+                testObject.addProperty("test_type", testResult.testCase.testType.toString());
+                testObject.addProperty("language", testResult.testCase.testPL.toString());
+                testObject.add("metrics", metrics);
+                results.add(testResult.testCase.testPL.toString(), testObject);
+            }
+        }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String folderPath = "./Results/";
+        File folder = new File(folderPath);
+        if (!folder.exists()) {
+            boolean created = folder.mkdirs();
+            if (!created) {
+                System.err.println("Failed to create directory: " + folderPath);
+                return false;
+            }
+        }
+
+        String timeStamp = LocalDateTime.now().toString().replace(":", "-");
+        String fileName = "test_results_" + timeStamp + ".json";
+
+        try (FileWriter file = new FileWriter(new File(folder, fileName))) {
+            file.write(gson.toJson(allTestResults));
+            System.out.println("File saved as: " + new File(folder, fileName).getCanonicalPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+
+    private List<Integer> movingAverage(List<Long> values, int windowSize) {
         List<Integer> smoothedValues = new ArrayList<>();
         int halfWindow = windowSize / 2;
 

@@ -3,17 +3,14 @@ package ursug.benchmarkssc.Controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import ursug.benchmarkssc.CodeController.CPLUSPLUS;
+import ursug.benchmarkssc.Logic.CPLUSPLUS;
+import ursug.benchmarkssc.Logic.CSHARP;
+import ursug.benchmarkssc.Logic.JAVA;
+import ursug.benchmarkssc.MainApp;
 import ursug.benchmarkssc.Model.TestCase;
 import ursug.benchmarkssc.Model.TestResults;
 import ursug.benchmarkssc.Enum.TestPL;
@@ -21,6 +18,8 @@ import ursug.benchmarkssc.Enum.TestType;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static ursug.benchmarkssc.Utils.ShowAlert.setAlert;
 
 public class TestsAndPLSelectController {
     public CheckBox checkbox_cpp;
@@ -45,6 +44,14 @@ public class TestsAndPLSelectController {
     public AnchorPane anchorpane_selectPL;
     public AnchorPane anchorpane_tests_parameters;
     public ProgressIndicator progressindicator_loading_tests;
+    public TextField textfield_memalloc_step;
+    public TextField textfield_memacces_step;
+    public TextField textfield_thcreate_step;
+    public TextField textfield_thconswitch_step;
+    public TextField textfield_thmigration_step;
+    public Button button_previoustests;
+
+    Alert a = new Alert(Alert.AlertType.NONE);
 
     @FXML
     public void initialize() {
@@ -72,8 +79,11 @@ public class TestsAndPLSelectController {
                 }).start();
             } else {
                 System.out.println("Fields are not valid");
+                setAlert(Alert.AlertType.ERROR, a);
             }
         });
+
+        button_previoustests.setOnAction(this::switchToAllResults);
     }
 
     public Boolean areFieldsValid() {
@@ -86,32 +96,52 @@ public class TestsAndPLSelectController {
                 return false;
             }
             if (checkbox_memalloc.isSelected()) {
-                if (textfield_memalloc_from.getText().isEmpty() || textfield_memalloc_to.getText().isEmpty() ||
-                        Integer.parseInt(textfield_memalloc_from.getText()) > Integer.parseInt(textfield_memalloc_to.getText())) {
+                if (textfield_memalloc_step.getText().isEmpty() || textfield_memalloc_from.getText().isEmpty() ||
+                        textfield_memalloc_to.getText().isEmpty() ||
+                        Integer.parseInt(textfield_memalloc_from.getText()) > Integer.parseInt(textfield_memalloc_to.getText()) ||
+                        Integer.parseInt(textfield_memalloc_to.getText()) - Integer.parseInt(textfield_memalloc_from.getText())
+                                < Integer.parseInt(textfield_memalloc_step.getText())
+                ) {
                     return false;
                 }
             }
             if (checkbox_memaccess.isSelected()) {
                 if (textfield_memaccess_from.getText().isEmpty() || textfield_memacces_to.getText().isEmpty() ||
-                        Integer.parseInt(textfield_memaccess_from.getText()) > Integer.parseInt(textfield_memacces_to.getText())) {
+                        textfield_memacces_step.getText().isEmpty() ||
+                        Integer.parseInt(textfield_memaccess_from.getText()) > Integer.parseInt(textfield_memacces_to.getText()) ||
+                        Integer.parseInt(textfield_memacces_to.getText()) - Integer.parseInt(textfield_memaccess_from.getText())
+                                < Integer.parseInt(textfield_memacces_step.getText())
+                ) {
                     return false;
                 }
             }
             if (checkbox_thcreate.isSelected()) {
                 if (textfield_thcreate_from.getText().isEmpty() || textfield_thcreate_to.getText().isEmpty() ||
-                        Integer.parseInt(textfield_thcreate_from.getText()) > Integer.parseInt(textfield_thcreate_to.getText())) {
+                        textfield_thcreate_step.getText().isEmpty() ||
+                        Integer.parseInt(textfield_thcreate_from.getText()) > Integer.parseInt(textfield_thcreate_to.getText()) ||
+                        Integer.parseInt(textfield_thcreate_to.getText()) - Integer.parseInt(textfield_thcreate_from.getText())
+                                < Integer.parseInt(textfield_thcreate_step.getText())
+                ) {
                     return false;
                 }
             }
             if (checkbox_thmigration.isSelected()) {
                 if (textfield_thmigration_from.getText().isEmpty() || textfield_thmigration_to.getText().isEmpty() ||
-                        Integer.parseInt(textfield_thmigration_from.getText()) > Integer.parseInt(textfield_thmigration_to.getText())) {
+                        textfield_thmigration_step.getText().isEmpty() ||
+                        Integer.parseInt(textfield_thmigration_from.getText()) > Integer.parseInt(textfield_thmigration_to.getText()) ||
+                        Integer.parseInt(textfield_thmigration_to.getText()) - Integer.parseInt(textfield_thmigration_from.getText())
+                                < Integer.parseInt(textfield_thmigration_step.getText())
+                ) {
                     return false;
                 }
             }
             if (checkbox_thconswitch.isSelected()) {
                 if (textfield_thconswitch_from.getText().isEmpty() || textfield_thconswitch_to.getText().isEmpty() ||
-                        Integer.parseInt(textfield_thconswitch_from.getText()) > Integer.parseInt(textfield_thconswitch_to.getText())) {
+                        textfield_thconswitch_step.getText().isEmpty() ||
+                        Integer.parseInt(textfield_thconswitch_from.getText()) > Integer.parseInt(textfield_thconswitch_to.getText()) ||
+                        Integer.parseInt(textfield_thconswitch_to.getText()) - Integer.parseInt(textfield_thconswitch_from.getText())
+                                < Integer.parseInt(textfield_thconswitch_step.getText())
+                ) {
                     return false;
                 }
             }
@@ -124,69 +154,95 @@ public class TestsAndPLSelectController {
     @FXML
     public void createTestsBasedOnProgrammingLanguage() {
         List<List<TestResults>> testResults = new ArrayList<>();
-        if (checkbox_cpp.isSelected()) {
-            //create tests for c++
-            List<TestCase> testCases = createTestsBasedOnTestType(TestPL.CPP);
-            CPLUSPLUS cplusplus = new CPLUSPLUS(testCases);
-            List<TestResults> results = cplusplus.runTests();
-            testResults.add(results);
-            System.out.println(results.size() + " lsita mica size");
 
-        }
-        System.out.println(testResults.size() + " lsita mare size");
-        System.out.println(testResults.get(0).size() + " lsita mica size");
+        Runnable test1 = () -> {
+            if (checkbox_cpp.isSelected()) {
+                List<TestCase> testCases = createTestsBasedOnTestType(TestPL.CPP);
+                CPLUSPLUS cplusplus = new CPLUSPLUS(testCases);
+                List<TestResults> results = cplusplus.runTests();
+                testResults.add(results);
+            }
+        };
+        Runnable test2 = () -> {
+            if (checkbox_csharp.isSelected()) {
+                List<TestCase> testCases = createTestsBasedOnTestType(TestPL.CSHARP);
+                CSHARP csharp = new CSHARP(testCases);
+                List<TestResults> results = csharp.runTests();
+                testResults.add(results);
+            }
+        };
 
+        Runnable test3 = () -> {
+            if (checkbox_java.isSelected()) {
+                List<TestCase> testCases = createTestsBasedOnTestType(TestPL.JAVA);
+                JAVA java = new JAVA(testCases);
+                List<TestResults> results = java.runTests();
+                testResults.add(results);
+            }
+        };
+        Thread thread1 = new Thread(test1);
+        Thread thread2 = new Thread(test2);
+        Thread thread3 = new Thread(test3);
 
-        //go to results page and pass results to it
+        thread1.start();
+        thread2.start();
+        thread3.start();
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ursug/benchmarkssc/test_results.fxml"));
-            Parent root = loader.load();
+            thread1.join();
+            thread2.join();
+            thread3.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Platform.runLater(() -> {
+            try {
+                MainApp.switchToResults(testResults, (Stage) button_starttest.getScene().getWindow());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
-            TestResultsController controller = loader.getController();
-            controller.initializeWithData(testResults);
-
-            Platform.runLater(() -> {
-                Stage stage = (Stage) checkbox_memaccess.getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.setTitle("Scene 2");
-            });
+    public void switchToAllResults(ActionEvent actionEvent) {
+        try {
+            MainApp.switchToAllResults((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public List<TestCase> createTestsBasedOnTestType(TestPL testPL) {
-        //create all tests basd on right textfrields
         List<TestCase> testCases = new ArrayList<>();
         if (checkbox_memalloc.isSelected()) {
             testCases.add(new TestCase(Integer.parseInt(textfield_memalloc_from.getText().toString()),
-                    Integer.parseInt(textfield_memalloc_to.getText().toString()), 1000, 10,
+                    Integer.parseInt(textfield_memalloc_to.getText().toString()), Integer.parseInt(textfield_memalloc_step.getText().toString()), 10,
                     TestType.MEMORY_ALLOCATION_STATIC, testPL));
             testCases.add(new TestCase(Integer.parseInt(textfield_memalloc_from.getText().toString()),
-                    Integer.parseInt(textfield_memalloc_to.getText().toString()), 1000, 10,
+                    Integer.parseInt(textfield_memalloc_to.getText().toString()), Integer.parseInt(textfield_memalloc_step.getText().toString()), 10,
                     TestType.MEMORY_ALLOCATION_DYNAMIC, testPL));
         }
         if (checkbox_memaccess.isSelected()) {
             testCases.add(new TestCase(Integer.parseInt(textfield_memaccess_from.getText().toString()),
-                    Integer.parseInt(textfield_memacces_to.getText().toString()), 100, 5,
+                    Integer.parseInt(textfield_memacces_to.getText().toString()), Integer.parseInt(textfield_memacces_step.getText().toString()), 5,
                     TestType.MEMORY_ACCESS_STATIC, testPL));
             testCases.add(new TestCase(Integer.parseInt(textfield_memaccess_from.getText().toString()),
-                    Integer.parseInt(textfield_memacces_to.getText().toString()), 100, 5,
+                    Integer.parseInt(textfield_memacces_to.getText().toString()), Integer.parseInt(textfield_memacces_step.getText().toString()), 5,
                     TestType.MEMORY_ACCESS_DYNAMIC, testPL));
         }
         if (checkbox_thcreate.isSelected()) {
             testCases.add(new TestCase(Integer.parseInt(textfield_thcreate_from.getText().toString()),
-                    Integer.parseInt(textfield_thcreate_to.getText().toString()), 100, 5,
+                    Integer.parseInt(textfield_thcreate_to.getText().toString()), Integer.parseInt(textfield_thcreate_step.getText().toString()), 5,
                     TestType.THREAD_CREATION, testPL));
         }
         if (checkbox_thmigration.isSelected()) {
             testCases.add(new TestCase(Integer.parseInt(textfield_thmigration_from.getText().toString()),
-                    Integer.parseInt(textfield_thmigration_to.getText().toString()), 100, 5,
+                    Integer.parseInt(textfield_thmigration_to.getText().toString()), Integer.parseInt(textfield_thmigration_step.getText().toString()), 5,
                     TestType.THREAD_MIGRATION, testPL));
         }
         if (checkbox_thconswitch.isSelected()) {
             testCases.add(new TestCase(Integer.parseInt(textfield_thconswitch_from.getText().toString()),
-                    Integer.parseInt(textfield_thconswitch_to.getText().toString()), 100, 5,
+                    Integer.parseInt(textfield_thconswitch_to.getText().toString()), Integer.parseInt(textfield_thconswitch_step.getText().toString()), 5,
                     TestType.THREAD_CONTEXT_SWITCH, testPL));
         }
         return testCases;

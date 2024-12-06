@@ -1,0 +1,464 @@
+[
+  [
+    {
+      "date": "2024-12-05T16:20:06.725601",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 110000,
+        "step": 2000,
+        "numberOfTests": 10,
+        "testType": "MEMORY_ALLOCATION_STATIC",
+        "testPL": "CPP"
+      },
+      "averageTime": 411.0,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 376
+        },
+        {
+          "index": 102000,
+          "value": 368
+        },
+        {
+          "index": 104000,
+          "value": 413
+        },
+        {
+          "index": 106000,
+          "value": 348
+        },
+        {
+          "index": 108000,
+          "value": 480
+        },
+        {
+          "index": 110000,
+          "value": 481
+        }
+      ]
+    },
+    {
+      "date": "2024-12-05T16:20:08.522034600",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 110000,
+        "step": 2000,
+        "numberOfTests": 10,
+        "testType": "MEMORY_ALLOCATION_DYNAMIC",
+        "testPL": "CPP"
+      },
+      "averageTime": 277.67,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 230
+        },
+        {
+          "index": 102000,
+          "value": 262
+        },
+        {
+          "index": 104000,
+          "value": 274
+        },
+        {
+          "index": 106000,
+          "value": 344
+        },
+        {
+          "index": 108000,
+          "value": 304
+        },
+        {
+          "index": 110000,
+          "value": 252
+        }
+      ]
+    },
+    {
+      "date": "2024-12-05T16:20:10.257418200",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 110000,
+        "step": 2000,
+        "numberOfTests": 5,
+        "testType": "MEMORY_ACCESS_STATIC",
+        "testPL": "CPP"
+      },
+      "averageTime": 614.5,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 576
+        },
+        {
+          "index": 102000,
+          "value": 699
+        },
+        {
+          "index": 104000,
+          "value": 584
+        },
+        {
+          "index": 106000,
+          "value": 583
+        },
+        {
+          "index": 108000,
+          "value": 565
+        },
+        {
+          "index": 110000,
+          "value": 680
+        }
+      ]
+    },
+    {
+      "date": "2024-12-05T16:20:11.102132100",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 110000,
+        "step": 2000,
+        "numberOfTests": 5,
+        "testType": "MEMORY_ACCESS_DYNAMIC",
+        "testPL": "CPP"
+      },
+      "averageTime": 452.0,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 339
+        },
+        {
+          "index": 102000,
+          "value": 371
+        },
+        {
+          "index": 104000,
+          "value": 374
+        },
+        {
+          "index": 106000,
+          "value": 560
+        },
+        {
+          "index": 108000,
+          "value": 504
+        },
+        {
+          "index": 110000,
+          "value": 564
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "date": "2024-12-05T16:20:11.940039400",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 110000,
+        "step": 2000,
+        "numberOfTests": 10,
+        "testType": "MEMORY_ALLOCATION_STATIC",
+        "testPL": "CSHARP"
+      },
+      "averageTime": 513.67,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 495
+        },
+        {
+          "index": 102000,
+          "value": 485
+        },
+        {
+          "index": 104000,
+          "value": 524
+        },
+        {
+          "index": 106000,
+          "value": 532
+        },
+        {
+          "index": 108000,
+          "value": 513
+        },
+        {
+          "index": 110000,
+          "value": 533
+        }
+      ]
+    },
+    {
+      "date": "2024-12-05T16:20:17.785840800",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 110000,
+        "step": 2000,
+        "numberOfTests": 10,
+        "testType": "MEMORY_ALLOCATION_DYNAMIC",
+        "testPL": "CSHARP"
+      },
+      "averageTime": 1788.5,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 1781
+        },
+        {
+          "index": 102000,
+          "value": 1937
+        },
+        {
+          "index": 104000,
+          "value": 1852
+        },
+        {
+          "index": 106000,
+          "value": 1854
+        },
+        {
+          "index": 108000,
+          "value": 1708
+        },
+        {
+          "index": 110000,
+          "value": 1599
+        }
+      ]
+    },
+    {
+      "date": "2024-12-05T16:20:23.794511300",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 110000,
+        "step": 2000,
+        "numberOfTests": 5,
+        "testType": "MEMORY_ACCESS_STATIC",
+        "testPL": "CSHARP"
+      },
+      "averageTime": 794.0,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 938
+        },
+        {
+          "index": 102000,
+          "value": 612
+        },
+        {
+          "index": 104000,
+          "value": 738
+        },
+        {
+          "index": 106000,
+          "value": 806
+        },
+        {
+          "index": 108000,
+          "value": 771
+        },
+        {
+          "index": 110000,
+          "value": 899
+        }
+      ]
+    },
+    {
+      "date": "2024-12-05T16:20:26.910061900",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 110000,
+        "step": 2000,
+        "numberOfTests": 5,
+        "testType": "MEMORY_ACCESS_DYNAMIC",
+        "testPL": "CSHARP"
+      },
+      "averageTime": 2961.17,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 3074
+        },
+        {
+          "index": 102000,
+          "value": 3011
+        },
+        {
+          "index": 104000,
+          "value": 2759
+        },
+        {
+          "index": 106000,
+          "value": 2994
+        },
+        {
+          "index": 108000,
+          "value": 3179
+        },
+        {
+          "index": 110000,
+          "value": 2750
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "date": "2024-12-05T16:20:11.940039400",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 110000,
+        "step": 2000,
+        "numberOfTests": 10,
+        "testType": "MEMORY_ALLOCATION_STATIC",
+        "testPL": "JAVA"
+      },
+      "averageTime": 1106.67,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 1088
+        },
+        {
+          "index": 102000,
+          "value": 1062
+        },
+        {
+          "index": 104000,
+          "value": 1294
+        },
+        {
+          "index": 106000,
+          "value": 974
+        },
+        {
+          "index": 108000,
+          "value": 1122
+        },
+        {
+          "index": 110000,
+          "value": 1100
+        }
+      ]
+    },
+    {
+      "date": "2024-12-05T16:20:19.430003100",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 110000,
+        "step": 2000,
+        "numberOfTests": 10,
+        "testType": "MEMORY_ALLOCATION_DYNAMIC",
+        "testPL": "JAVA"
+      },
+      "averageTime": 7021.17,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 6236
+        },
+        {
+          "index": 102000,
+          "value": 6759
+        },
+        {
+          "index": 104000,
+          "value": 6089
+        },
+        {
+          "index": 106000,
+          "value": 6059
+        },
+        {
+          "index": 108000,
+          "value": 7632
+        },
+        {
+          "index": 110000,
+          "value": 9352
+        }
+      ]
+    },
+    {
+      "date": "2024-12-05T16:20:28.305039300",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 110000,
+        "step": 2000,
+        "numberOfTests": 5,
+        "testType": "MEMORY_ACCESS_STATIC",
+        "testPL": "JAVA"
+      },
+      "averageTime": 1824.83,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 1919
+        },
+        {
+          "index": 102000,
+          "value": 2138
+        },
+        {
+          "index": 104000,
+          "value": 1794
+        },
+        {
+          "index": 106000,
+          "value": 1607
+        },
+        {
+          "index": 108000,
+          "value": 1540
+        },
+        {
+          "index": 110000,
+          "value": 1951
+        }
+      ]
+    },
+    {
+      "date": "2024-12-05T16:20:33.427938900",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 110000,
+        "step": 2000,
+        "numberOfTests": 5,
+        "testType": "MEMORY_ACCESS_DYNAMIC",
+        "testPL": "JAVA"
+      },
+      "averageTime": 9374.83,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 10281
+        },
+        {
+          "index": 102000,
+          "value": 8046
+        },
+        {
+          "index": 104000,
+          "value": 10071
+        },
+        {
+          "index": 106000,
+          "value": 9945
+        },
+        {
+          "index": 108000,
+          "value": 8484
+        },
+        {
+          "index": 110000,
+          "value": 9422
+        }
+      ]
+    }
+  ]
+]

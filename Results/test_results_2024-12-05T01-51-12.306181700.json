@@ -1,0 +1,200 @@
+[
+  [
+    {
+      "date": "2024-12-05T01:24:34.857819",
+      "testCase": {
+        "startInterval": 100,
+        "endInterval": 500,
+        "step": 20,
+        "numberOfTests": 10,
+        "testType": "MEMORY_ALLOCATION_STATIC",
+        "testPL": "CPP"
+      },
+      "averageTime": 0.0,
+      "graphPoints": [
+        {
+          "index": 100,
+          "value": 0
+        },
+        {
+          "index": 120,
+          "value": 0
+        },
+        {
+          "index": 140,
+          "value": 0
+        },
+        {
+          "index": 160,
+          "value": 0
+        },
+        {
+          "index": 180,
+          "value": 0
+        },
+        {
+          "index": 200,
+          "value": 0
+        },
+        {
+          "index": 220,
+          "value": 0
+        },
+        {
+          "index": 240,
+          "value": 0
+        },
+        {
+          "index": 260,
+          "value": 0
+        },
+        {
+          "index": 280,
+          "value": 0
+        },
+        {
+          "index": 300,
+          "value": 0
+        },
+        {
+          "index": 320,
+          "value": 0
+        },
+        {
+          "index": 340,
+          "value": 0
+        },
+        {
+          "index": 360,
+          "value": 0
+        },
+        {
+          "index": 380,
+          "value": 0
+        },
+        {
+          "index": 400,
+          "value": 0
+        },
+        {
+          "index": 420,
+          "value": 0
+        },
+        {
+          "index": 440,
+          "value": 0
+        },
+        {
+          "index": 460,
+          "value": 0
+        },
+        {
+          "index": 480,
+          "value": 0
+        },
+        {
+          "index": 500,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "date": "2024-12-05T01:24:40.289996200",
+      "testCase": {
+        "startInterval": 100,
+        "endInterval": 500,
+        "step": 20,
+        "numberOfTests": 10,
+        "testType": "MEMORY_ALLOCATION_DYNAMIC",
+        "testPL": "CPP"
+      },
+      "averageTime": 0.7619047619047619,
+      "graphPoints": [
+        {
+          "index": 100,
+          "value": 0
+        },
+        {
+          "index": 120,
+          "value": 0
+        },
+        {
+          "index": 140,
+          "value": 0
+        },
+        {
+          "index": 160,
+          "value": 0
+        },
+        {
+          "index": 180,
+          "value": 0
+        },
+        {
+          "index": 200,
+          "value": 0
+        },
+        {
+          "index": 220,
+          "value": 1
+        },
+        {
+          "index": 240,
+          "value": 0
+        },
+        {
+          "index": 260,
+          "value": 1
+        },
+        {
+          "index": 280,
+          "value": 1
+        },
+        {
+          "index": 300,
+          "value": 2
+        },
+        {
+          "index": 320,
+          "value": 1
+        },
+        {
+          "index": 340,
+          "value": 1
+        },
+        {
+          "index": 360,
+          "value": 1
+        },
+        {
+          "index": 380,
+          "value": 1
+        },
+        {
+          "index": 400,
+          "value": 1
+        },
+        {
+          "index": 420,
+          "value": 1
+        },
+        {
+          "index": 440,
+          "value": 2
+        },
+        {
+          "index": 460,
+          "value": 1
+        },
+        {
+          "index": 480,
+          "value": 1
+        },
+        {
+          "index": 500,
+          "value": 1
+        }
+      ]
+    }
+  ]
+]

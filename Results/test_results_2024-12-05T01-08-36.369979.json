@@ -1,0 +1,10 @@
+{
+  "CPP": {
+    "time_stamp": "2024-12-05T01:08:31.763681600",
+    "test_type": "MEMORY_ALLOCATION_DYNAMIC",
+    "language": "CPP",
+    "metrics": {
+      "avg_execution_time": 5.666666666666667
+    }
+  }
+}

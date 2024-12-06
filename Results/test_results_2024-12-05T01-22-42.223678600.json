@@ -1,0 +1,56 @@
+[
+  [
+    {
+      "date": "2024-12-05T01:22:37.742392200",
+      "testCase": {
+        "startInterval": 100,
+        "endInterval": 200,
+        "step": 50,
+        "numberOfTests": 10,
+        "testType": "MEMORY_ALLOCATION_STATIC",
+        "testPL": "CPP"
+      },
+      "graphPoints": [
+        {
+          "x": 100,
+          "y": 0
+        },
+        {
+          "x": 150,
+          "y": 0
+        },
+        {
+          "x": 200,
+          "y": 0
+        }
+      ],
+      "averageTime": 0.0
+    },
+    {
+      "date": "2024-12-05T01:22:38.634985200",
+      "testCase": {
+        "startInterval": 100,
+        "endInterval": 200,
+        "step": 50,
+        "numberOfTests": 10,
+        "testType": "MEMORY_ALLOCATION_DYNAMIC",
+        "testPL": "CPP"
+      },
+      "graphPoints": [
+        {
+          "x": 100,
+          "y": 0
+        },
+        {
+          "x": 150,
+          "y": 0
+        },
+        {
+          "x": 200,
+          "y": 0
+        }
+      ],
+      "averageTime": 0.0
+    }
+  ]
+]

@@ -1,0 +1,80 @@
+[
+  [
+    {
+      "date": "2024-12-05T01:51:32.763403200",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 200000,
+        "step": 20000,
+        "numberOfTests": 10,
+        "testType": "MEMORY_ALLOCATION_STATIC",
+        "testPL": "CPP"
+      },
+      "averageTime": 547.5,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 425
+        },
+        {
+          "index": 120000,
+          "value": 420
+        },
+        {
+          "index": 140000,
+          "value": 471
+        },
+        {
+          "index": 160000,
+          "value": 636
+        },
+        {
+          "index": 180000,
+          "value": 649
+        },
+        {
+          "index": 200000,
+          "value": 684
+        }
+      ]
+    },
+    {
+      "date": "2024-12-05T01:51:34.381604500",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 200000,
+        "step": 20000,
+        "numberOfTests": 10,
+        "testType": "MEMORY_ALLOCATION_DYNAMIC",
+        "testPL": "CPP"
+      },
+      "averageTime": 402.3333333333333,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 271
+        },
+        {
+          "index": 120000,
+          "value": 313
+        },
+        {
+          "index": 140000,
+          "value": 366
+        },
+        {
+          "index": 160000,
+          "value": 446
+        },
+        {
+          "index": 180000,
+          "value": 430
+        },
+        {
+          "index": 200000,
+          "value": 588
+        }
+      ]
+    }
+  ]
+]

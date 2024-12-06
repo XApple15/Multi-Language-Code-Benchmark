@@ -1,0 +1,427 @@
+[
+  [
+    {
+      "date": "2024-12-06T10:03:19.263213900",
+      "testCase": {
+        "startInterval": 10000,
+        "endInterval": 12000,
+        "step": 200,
+        "numberOfTests": 5,
+        "testType": "THREAD_CREATION",
+        "testPL": "CSHARP"
+      },
+      "errorIndex": 10600,
+      "averageTime": 3476136.0,
+      "graphPoints": [
+        {
+          "index": 10000,
+          "value": 3702689
+        },
+        {
+          "index": 10200,
+          "value": 3087307
+        },
+        {
+          "index": 10400,
+          "value": 3638412
+        }
+      ]
+    },
+    {
+      "date": "2024-12-06T10:04:43.696041700",
+      "testCase": {
+        "startInterval": 1000,
+        "endInterval": 2000,
+        "step": 250,
+        "numberOfTests": 5,
+        "testType": "THREAD_MIGRATION",
+        "testPL": "CSHARP"
+      },
+      "averageTime": 191.6,
+      "graphPoints": [
+        {
+          "index": 1000,
+          "value": 217
+        },
+        {
+          "index": 1250,
+          "value": 165
+        },
+        {
+          "index": 1500,
+          "value": 156
+        },
+        {
+          "index": 1750,
+          "value": 189
+        },
+        {
+          "index": 2000,
+          "value": 231
+        }
+      ]
+    },
+    {
+      "date": "2024-12-06T10:04:56.065548600",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 200000,
+        "step": 10000,
+        "numberOfTests": 5,
+        "testType": "THREAD_CONTEXT_SWITCH",
+        "testPL": "CSHARP"
+      },
+      "averageTime": 60181.09,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 45111
+        },
+        {
+          "index": 110000,
+          "value": 114633
+        },
+        {
+          "index": 120000,
+          "value": 44582
+        },
+        {
+          "index": 130000,
+          "value": 77412
+        },
+        {
+          "index": 140000,
+          "value": 45241
+        },
+        {
+          "index": 150000,
+          "value": 48406
+        },
+        {
+          "index": 160000,
+          "value": 40267
+        },
+        {
+          "index": 170000,
+          "value": 47123
+        },
+        {
+          "index": 180000,
+          "value": 55150
+        },
+        {
+          "index": 190000,
+          "value": 80446
+        },
+        {
+          "index": 200000,
+          "value": 63621
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "date": "2024-12-06T10:03:19.263213900",
+      "testCase": {
+        "startInterval": 10000,
+        "endInterval": 12000,
+        "step": 200,
+        "numberOfTests": 5,
+        "testType": "THREAD_CREATION",
+        "testPL": "CPP"
+      },
+      "averageTime": 1684206.82,
+      "graphPoints": [
+        {
+          "index": 10000,
+          "value": 1586525
+        },
+        {
+          "index": 10200,
+          "value": 1444406
+        },
+        {
+          "index": 10400,
+          "value": 1321652
+        },
+        {
+          "index": 10600,
+          "value": 1243209
+        },
+        {
+          "index": 10800,
+          "value": 1507403
+        },
+        {
+          "index": 11000,
+          "value": 1356084
+        },
+        {
+          "index": 11200,
+          "value": 1765401
+        },
+        {
+          "index": 11400,
+          "value": 2070481
+        },
+        {
+          "index": 11600,
+          "value": 1509550
+        },
+        {
+          "index": 11800,
+          "value": 2032059
+        },
+        {
+          "index": 12000,
+          "value": 2689505
+        }
+      ]
+    },
+    {
+      "date": "2024-12-06T10:04:55.378786900",
+      "testCase": {
+        "startInterval": 1000,
+        "endInterval": 2000,
+        "step": 250,
+        "numberOfTests": 5,
+        "testType": "THREAD_MIGRATION",
+        "testPL": "CPP"
+      },
+      "averageTime": 0.0,
+      "graphPoints": [
+        {
+          "index": 1000,
+          "value": 0
+        },
+        {
+          "index": 1250,
+          "value": 0
+        },
+        {
+          "index": 1500,
+          "value": 0
+        },
+        {
+          "index": 1750,
+          "value": 0
+        },
+        {
+          "index": 2000,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "date": "2024-12-06T10:04:58.225069700",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 200000,
+        "step": 10000,
+        "numberOfTests": 5,
+        "testType": "THREAD_CONTEXT_SWITCH",
+        "testPL": "CPP"
+      },
+      "averageTime": 54629.82,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 48615
+        },
+        {
+          "index": 110000,
+          "value": 36390
+        },
+        {
+          "index": 120000,
+          "value": 121508
+        },
+        {
+          "index": 130000,
+          "value": 45458
+        },
+        {
+          "index": 140000,
+          "value": 49446
+        },
+        {
+          "index": 150000,
+          "value": 52790
+        },
+        {
+          "index": 160000,
+          "value": 50632
+        },
+        {
+          "index": 170000,
+          "value": 50011
+        },
+        {
+          "index": 180000,
+          "value": 36517
+        },
+        {
+          "index": 190000,
+          "value": 44119
+        },
+        {
+          "index": 200000,
+          "value": 65442
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "date": "2024-12-06T10:03:19.263213900",
+      "testCase": {
+        "startInterval": 10000,
+        "endInterval": 12000,
+        "step": 200,
+        "numberOfTests": 5,
+        "testType": "THREAD_CREATION",
+        "testPL": "JAVA"
+      },
+      "averageTime": 1935982.73,
+      "graphPoints": [
+        {
+          "index": 10000,
+          "value": 1790814
+        },
+        {
+          "index": 10200,
+          "value": 1662127
+        },
+        {
+          "index": 10400,
+          "value": 1533476
+        },
+        {
+          "index": 10600,
+          "value": 1724547
+        },
+        {
+          "index": 10800,
+          "value": 1852563
+        },
+        {
+          "index": 11000,
+          "value": 1886726
+        },
+        {
+          "index": 11200,
+          "value": 2066227
+        },
+        {
+          "index": 11400,
+          "value": 2299221
+        },
+        {
+          "index": 11600,
+          "value": 2733823
+        },
+        {
+          "index": 11800,
+          "value": 2213405
+        },
+        {
+          "index": 12000,
+          "value": 1532881
+        }
+      ]
+    },
+    {
+      "date": "2024-12-06T10:05:25.743882900",
+      "testCase": {
+        "startInterval": 1000,
+        "endInterval": 2000,
+        "step": 250,
+        "numberOfTests": 5,
+        "testType": "THREAD_MIGRATION",
+        "testPL": "JAVA"
+      },
+      "averageTime": 485.2,
+      "graphPoints": [
+        {
+          "index": 1000,
+          "value": 381
+        },
+        {
+          "index": 1250,
+          "value": 485
+        },
+        {
+          "index": 1500,
+          "value": 519
+        },
+        {
+          "index": 1750,
+          "value": 502
+        },
+        {
+          "index": 2000,
+          "value": 539
+        }
+      ]
+    },
+    {
+      "date": "2024-12-06T10:05:49.409755500",
+      "testCase": {
+        "startInterval": 100000,
+        "endInterval": 200000,
+        "step": 10000,
+        "numberOfTests": 5,
+        "testType": "THREAD_CONTEXT_SWITCH",
+        "testPL": "JAVA"
+      },
+      "averageTime": 35833.18,
+      "graphPoints": [
+        {
+          "index": 100000,
+          "value": 23944
+        },
+        {
+          "index": 110000,
+          "value": 28147
+        },
+        {
+          "index": 120000,
+          "value": 30280
+        },
+        {
+          "index": 130000,
+          "value": 35370
+        },
+        {
+          "index": 140000,
+          "value": 32055
+        },
+        {
+          "index": 150000,
+          "value": 33064
+        },
+        {
+          "index": 160000,
+          "value": 40446
+        },
+        {
+          "index": 170000,
+          "value": 41486
+        },
+        {
+          "index": 180000,
+          "value": 47450
+        },
+        {
+          "index": 190000,
+          "value": 38553
+        },
+        {
+          "index": 200000,
+          "value": 43370
+        }
+      ]
+    }
+  ]
+]

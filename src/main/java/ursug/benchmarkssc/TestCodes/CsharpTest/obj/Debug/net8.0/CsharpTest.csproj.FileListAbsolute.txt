@@ -1,0 +1,15 @@
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\obj\Debug\net8.0\CsharpTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\obj\Debug\net8.0\CsharpTest.AssemblyInfoInputs.cache
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\obj\Debug\net8.0\CsharpTest.AssemblyInfo.cs
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\obj\Debug\net8.0\CsharpTest.csproj.CoreCompileInputs.cache
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\obj\Debug\net8.0\CsharpTest.sourcelink.json
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\bin\Debug\net8.0\CsharpTest.exe
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\bin\Debug\net8.0\CsharpTest.deps.json
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\bin\Debug\net8.0\CsharpTest.runtimeconfig.json
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\bin\Debug\net8.0\CsharpTest.dll
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\bin\Debug\net8.0\CsharpTest.pdb
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\obj\Debug\net8.0\CsharpTest.dll
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\obj\Debug\net8.0\refint\CsharpTest.dll
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\obj\Debug\net8.0\CsharpTest.pdb
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\obj\Debug\net8.0\CsharpTest.genruntimeconfig.cache
+C:\Users\George\IdeaProjects\ProiectSSC\Benchmark\src\main\java\ursug\benchmarkssc\TestCodes\CsharpTest\obj\Debug\net8.0\ref\CsharpTest.dll

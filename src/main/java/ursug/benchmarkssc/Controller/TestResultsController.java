@@ -161,6 +161,7 @@ public class TestResultsController {
 
         axisX.setAutoRanging(false);
         label_erorr_index.setVisible(false);
+        label_erorr_index.setText("Error");
 
         for (List<TestResults> resultsList : testResults) {
             for (TestResults testResult : resultsList) {

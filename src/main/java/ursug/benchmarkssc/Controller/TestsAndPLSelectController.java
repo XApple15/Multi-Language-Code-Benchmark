@@ -216,33 +216,40 @@ public class TestsAndPLSelectController {
         List<TestCase> testCases = new ArrayList<>();
         if (checkbox_memalloc.isSelected()) {
             testCases.add(new TestCase(Integer.parseInt(textfield_memalloc_from.getText().toString()),
-                    Integer.parseInt(textfield_memalloc_to.getText().toString()), Integer.parseInt(textfield_memalloc_step.getText().toString()), 10,
+                    Integer.parseInt(textfield_memalloc_to.getText().toString()),
+                    Integer.parseInt(textfield_memalloc_step.getText().toString()), 10,
                     TestType.MEMORY_ALLOCATION_STATIC, testPL));
             testCases.add(new TestCase(Integer.parseInt(textfield_memalloc_from.getText().toString()),
-                    Integer.parseInt(textfield_memalloc_to.getText().toString()), Integer.parseInt(textfield_memalloc_step.getText().toString()), 10,
+                    Integer.parseInt(textfield_memalloc_to.getText().toString()),
+                    Integer.parseInt(textfield_memalloc_step.getText().toString()), 10,
                     TestType.MEMORY_ALLOCATION_DYNAMIC, testPL));
         }
         if (checkbox_memaccess.isSelected()) {
             testCases.add(new TestCase(Integer.parseInt(textfield_memaccess_from.getText().toString()),
-                    Integer.parseInt(textfield_memacces_to.getText().toString()), Integer.parseInt(textfield_memacces_step.getText().toString()), 5,
+                    Integer.parseInt(textfield_memacces_to.getText().toString()),
+                    Integer.parseInt(textfield_memacces_step.getText().toString()), 5,
                     TestType.MEMORY_ACCESS_STATIC, testPL));
             testCases.add(new TestCase(Integer.parseInt(textfield_memaccess_from.getText().toString()),
-                    Integer.parseInt(textfield_memacces_to.getText().toString()), Integer.parseInt(textfield_memacces_step.getText().toString()), 5,
+                    Integer.parseInt(textfield_memacces_to.getText().toString()),
+                    Integer.parseInt(textfield_memacces_step.getText().toString()), 5,
                     TestType.MEMORY_ACCESS_DYNAMIC, testPL));
         }
         if (checkbox_thcreate.isSelected()) {
             testCases.add(new TestCase(Integer.parseInt(textfield_thcreate_from.getText().toString()),
-                    Integer.parseInt(textfield_thcreate_to.getText().toString()), Integer.parseInt(textfield_thcreate_step.getText().toString()), 5,
+                    Integer.parseInt(textfield_thcreate_to.getText().toString()),
+                    Integer.parseInt(textfield_thcreate_step.getText().toString()), 5,
                     TestType.THREAD_CREATION, testPL));
         }
         if (checkbox_thmigration.isSelected()) {
             testCases.add(new TestCase(Integer.parseInt(textfield_thmigration_from.getText().toString()),
-                    Integer.parseInt(textfield_thmigration_to.getText().toString()), Integer.parseInt(textfield_thmigration_step.getText().toString()), 5,
+                    Integer.parseInt(textfield_thmigration_to.getText().toString()),
+                    Integer.parseInt(textfield_thmigration_step.getText().toString()), 5,
                     TestType.THREAD_MIGRATION, testPL));
         }
         if (checkbox_thconswitch.isSelected()) {
             testCases.add(new TestCase(Integer.parseInt(textfield_thconswitch_from.getText().toString()),
-                    Integer.parseInt(textfield_thconswitch_to.getText().toString()), Integer.parseInt(textfield_thconswitch_step.getText().toString()), 5,
+                    Integer.parseInt(textfield_thconswitch_to.getText().toString()),
+                    Integer.parseInt(textfield_thconswitch_step.getText().toString()), 5,
                     TestType.THREAD_CONTEXT_SWITCH, testPL));
         }
         return testCases;

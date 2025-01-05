@@ -5,6 +5,72 @@
 #include <vector>
 #include <atomic>
 #include <functional>
+#include <windows.h>
+#include <process.h>
+
+
+#ifdef _WIN32
+void pinThreadToCore(int coreId) {
+    DWORD_PTR mask = 1ULL << coreId; // Core affinity mask
+    if (SetThreadAffinityMask(GetCurrentThread(), mask) == 0) {
+        std::cerr << "Failed to set thread affinity. Error: " << GetLastError() << std::endl;
+    }
+}
+#elif __linux__
+void pinThreadToCore(int coreId) {
+    cpu_set_t cpuset;
+    CPU_ZERO(&cpuset);
+    CPU_SET(coreId, &cpuset);
+    int rc = pthread_setaffinity_np(pthread_self(), sizeof(cpu_set_t), &cpuset);
+    if (rc != 0) {
+        std::cerr << "Failed to set thread affinity. Error: " << rc << std::endl;
+    }
+}
+#endif
+
+void threadTask(std::atomic<bool>& signal, int numThreads) {
+    // Initially pin to core 0
+    pinThreadToCore(0);
+
+    // Wait for the signal to start
+    while (!signal.load(std::memory_order_acquire))
+        ;
+
+    // Simulate migration to core 1 after work
+    pinThreadToCore(1);
+}
+
+void measureThreadMigrationTime(int numThreads) {
+    using clock = std::chrono::high_resolution_clock;
+
+    std::atomic<bool> signal(false); // Signal to start threads
+    std::vector<std::thread> threads;
+
+    auto start = clock::now();
+
+    // Create and launch threads
+    for (int i = 0; i < numThreads; ++i) {
+        threads.emplace_back(threadTask, std::ref(signal), numThreads);
+    }
+
+    signal.store(true, std::memory_order_release);
+
+    // Wait for all threads to complete
+    for (auto& t : threads) {
+        t.join();
+    }
+
+    auto end = clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    std::cout<<duration.count();
+}
+
+
+
+
+
+
+
 
 void staticAllocation(int X) {
     int arr[X];
@@ -43,8 +109,6 @@ void dynamicMemoryAccess(int X) {
 }
 
 void threadFunction(int threadId) {
-    // Simulating some work
-   // std::this_thread::sleep_for(std::chrono::milliseconds(10));  // simulate work for 10ms
 }
 
 void measureThreadCreation(int X) {
@@ -65,7 +129,7 @@ void measureThreadCreation(int X) {
 }
 
 void measureContextSwitchTime(int iterations) {
-     std::atomic<int> turn(0); // Used to signal which thread should run
+     std::atomic<int> turn(0);
         std::atomic<int> counter(0);
 
         auto threadFunction = [&turn, &counter, iterations](int threadId) {
@@ -136,6 +200,9 @@ int main(int argc, char* argv[]) {
     }
     else if(testcode == "THREAD_CONTEXT_SWITCH") {
         measureContextSwitchTime(X);
+    }
+    else if(testcode == "THREAD_MIGRATION"){
+        measureThreadMigrationTime(X);
     }
     return 0;
 }

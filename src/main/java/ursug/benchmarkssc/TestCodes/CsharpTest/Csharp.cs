@@ -139,8 +139,8 @@ class Program
                  var signal = new ManualResetEvent(false);
                  var done = new ManualResetEvent(false);
 
-                 Stopwatch stopwatch = Stopwatch.StartNew();
-
+                 Stopwatch stopwatch =new  Stopwatch();
+                    stopwatch.Start();
                  var tasks = new List<Task>();
 
                  // Launch numThreads threads
@@ -160,7 +160,8 @@ class Program
                  Task.WhenAll(tasks).Wait();
 
                  stopwatch.Stop();
-                 Console.WriteLine(stopwatch.ElapsedMilliseconds);
+            Console.WriteLine((long)((stopwatch.ElapsedTicks * 1000000) / Stopwatch.Frequency));
+
              }
 
 

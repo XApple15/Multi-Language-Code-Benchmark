@@ -156,10 +156,11 @@ public class Java {
         AtomicBoolean signal = new AtomicBoolean(false);
         AtomicBoolean done = new AtomicBoolean(false);
 
-        long startTime = System.nanoTime();
 
         ExecutorService executor = Executors.newFixedThreadPool(numThreads);
         List<Future<?>> futures = new ArrayList<>();
+
+        long startTime = System.nanoTime();
 
         for (int i = 0; i < numThreads; i++) {
             futures.add(executor.submit(() -> {
@@ -168,11 +169,7 @@ public class Java {
                 signal.set(true);
             }));
         }
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         signal.set(true);
 
         for (Future<?> future : futures) {
@@ -184,7 +181,7 @@ public class Java {
         }
 
         long endTime = System.nanoTime();
-        long elapsedTime = (endTime - startTime) / 1000000;  // Convert to milliseconds
+        long elapsedTime = (endTime - startTime) / 1000;  // Convert to milliseconds
         System.out.println(elapsedTime);
         executor.shutdown();
     }
@@ -242,5 +239,6 @@ public class Java {
                 //System.out.println("Invalid test code.");
                 break;
         }
+
     }
 }
